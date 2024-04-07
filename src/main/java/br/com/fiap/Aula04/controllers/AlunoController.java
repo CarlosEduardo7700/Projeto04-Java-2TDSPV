@@ -6,6 +6,7 @@ import br.com.fiap.Aula04.dtos.DetalhesAlunoDto;
 import br.com.fiap.Aula04.dtos.ListagemAlunoDto;
 import br.com.fiap.Aula04.models.Aluno;
 import br.com.fiap.Aula04.repositories.AlunoRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class AlunoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<DetalhesAlunoDto> inserir(@RequestBody CadastroAlunoDto dto, UriComponentsBuilder builder) {
+    public ResponseEntity<DetalhesAlunoDto> inserir(@RequestBody @Valid CadastroAlunoDto dto, UriComponentsBuilder builder) {
         Aluno aluno = new Aluno(dto);
         repository.save(aluno);
 

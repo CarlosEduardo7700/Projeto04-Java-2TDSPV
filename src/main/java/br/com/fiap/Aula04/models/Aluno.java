@@ -45,6 +45,9 @@ public class Aluno {
     @Transient
     private Integer idade;
 
+    @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Carteirinha carteirinha;
+
     public Aluno(CadastroAlunoDto dto) {
         this.nome = dto.nome();
         this.cpf = dto.cpf();
