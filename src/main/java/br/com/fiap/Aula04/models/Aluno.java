@@ -48,6 +48,10 @@ public class Aluno {
     @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Carteirinha carteirinha;
 
+    @ManyToOne
+    @JoinColumn(name = "cd_turma", nullable = false)
+    private Turma turma;
+
     public Aluno(CadastroAlunoDto dto) {
         this.nome = dto.nome();
         this.cpf = dto.cpf();

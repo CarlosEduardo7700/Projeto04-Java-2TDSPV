@@ -9,6 +9,7 @@ import org.springframework.cglib.core.Local;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "JV_PROFESSOR")
@@ -29,4 +30,10 @@ public class Professor {
 
     @Column(name = "vl_salario", precision = 9, scale = 2, nullable = false)
     private BigDecimal salario;
+
+    @ManyToMany
+    @JoinTable(name = "JV_TURMA_PROFESSOR",
+            joinColumns = @JoinColumn(name = "cd_professor"),
+            inverseJoinColumns = @JoinColumn(name = "cd_turma"))
+    private List<Turma> turmas;
 }
